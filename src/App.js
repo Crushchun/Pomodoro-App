@@ -6,15 +6,15 @@ import Timer from "./components/Timer";
 import { themes } from "./themes";
 import { STATE_INFO, STATES_IDS } from "./const";
 
+// Creates a Context object that can share data that can be considered "global" for
+// a tree of components, without needing to pass props down each level of the tree.
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
 });
 
 function App() {
   const [mode, setMode] = React.useState("light");
-  const [customTheme, setCustomTheme] = React.useState(
-    themes[STATES_IDS["focus"]]
-  );
+  const [customTheme, setCustomTheme] = React.useState(themes[STATES_IDS["focus"]]);
 
   const colorMode = {
     toggleColorMode: () => {
@@ -30,13 +30,13 @@ function App() {
       mode,
       ...(mode === "light"
         ? {
-            // // palette values for light mode
-            ...customTheme.light,
-          }
+          // // palette values for light mode
+          ...customTheme.light,
+        }
         : {
-            // palette values for dark mode
-            ...customTheme.dark,
-          }),
+          // palette values for dark mode
+          ...customTheme.dark,
+        }),
     },
   });
 

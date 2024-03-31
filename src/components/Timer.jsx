@@ -37,7 +37,7 @@ const Timer = (props) => {
     setState(STATE_INFO[STATE_FLOW[currentFlowIndex]]);
     setNewTime(STATE_SECONDS[STATE_FLOW[currentFlowIndex]]);
     props.setCustomTheme(themes[STATE_FLOW[currentFlowIndex]]);
-  }, [currentFlowIndex, props]);
+  }, [currentFlowIndex, props])
 
   useEffect(() => {
     if (startTimer) {
@@ -46,12 +46,15 @@ const Timer = (props) => {
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [time, startTimer]);
+  }, [time, startTimer])
+
+
+
 
     return (
         <Box display={"flex"} flexDirection={"column"} justifyContent={"center"}>
             <Box>Focus</Box>
-            <Box fontSize={"256px"}>05:00</Box>
+            <Box fontSize={"256px"}>{time}</Box>
             <Box
                 display={"flex"}
                 flexDirection={"row"}
@@ -59,7 +62,7 @@ const Timer = (props) => {
                 gap={"20px"}
             >
                 <Settings />
-                <Play />
+                <Play start={handleStartTimer}/>
                 <Next />
              </Box>
         </Box>
